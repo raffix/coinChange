@@ -1,12 +1,13 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name . ' - About';
+$this->pageTitle=Yii::app()->name . ' - Sobre';
 $this->breadcrumbs=array(
-	'About',
+	'Sobre',
 );
 ?>
-<h1>About</h1>
+<h1>Sobre</h1>
 
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<p>
+	Para um troco N, e com um estoque infinito de cada uma das M moedas de diferentes valores m1, m2, …, mM, quais e quantas moedas você deve entregar ao cliente de modo que o total de moedas seja o mínimo possível?
+</p>

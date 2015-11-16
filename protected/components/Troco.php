@@ -3,7 +3,6 @@
 function troco($troco, $moedas){
 	$saida 	  = array();
 	$saida[0] = 0;
-	$moedas = explode(',', $moedas);
 
 	sort($moedas);
 
@@ -11,8 +10,8 @@ function troco($troco, $moedas){
 		$saida[$c] = exp($troco);
 
 		foreach ($d as $moedas) {
-			if( (intval($troco) - intval($d)) >=0) {
-				$saida[$c] = min(intval($saida[$c]), intval($saida[ $troco-$d] +1));
+			if( ($troco - $d) >=0) {
+				$saida[$c] = min($saida[$c],$saida[ $troco-$d] +1);
 			}
 		}
 	}
