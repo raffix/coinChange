@@ -30,6 +30,11 @@ $this->pageTitle=Yii::app()->name;
 		<?php echo CHtml::submitButton('Calcular'); ?>
 	</div>
 
+	<?php if(isset($_POST['resultado'])){ ?>
+	<h2 class="resultado"> Serão necessárias <?php echo $_POST['resultado'];?> moedas. </h2>
+	<?php } ?>
+
+
 
 <?php $this->endWidget(); ?>
 </div>

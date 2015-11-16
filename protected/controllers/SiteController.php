@@ -33,13 +33,10 @@ class SiteController extends Controller
 		$model = new CoinChange;
 		if( isset($_POST['CoinChange'])){
 			$model->attributes = $_POST['CoinChange'];
-
 			$moedas = $model->coins;
 			$troco  = $model->change;
-			
 			$resultado = $model->troco($troco, $moedas);
-			Yii::app()->user->setFlash('Index','Será necessário '+$resultado+' moedas');
-
+			$_POST['resultado'] = $resultado;
 		}
 		$this->render('index',array('model' => $model));
 
