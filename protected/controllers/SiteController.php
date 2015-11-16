@@ -31,22 +31,18 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		
 		$model = new CoinChange;
+		if( isset($_POST['CoinChange'])){
+			$model->attributes = $_POST['CoinChange'];
+
+			$moedas = $model->coins;
+			$troco  = $model->change;
+			
+			$resultado = $model->troco($troco, $moedas);
+			Yii::app()->user->setFlash('Index','Será necessário '+$resultado+' moedas');
+
+		}
 		$this->render('index',array('model' => $model));
 
-	}
-
-	/**
-	 * This is the action to handle external exceptions.
-	 */
-	public function actionError()
-	{
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
 	}
 
 	/**
@@ -108,6 +104,21 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+
+
+	/**
+	 * This is the action to handle external exceptions.
+	 */
+	public function actionError()
+	{
+		if($error=Yii::app()->errorHandler->error)
+		{
+			if(Yii::app()->request->isAjaxRequest)
+				echo $error['message'];
+			else
+				$this->render('error', $error);
+		}
 	}
 
 }
